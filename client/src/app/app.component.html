@@ -1,0 +1,47 @@
+<div class="container">
+  <h1>IOT Control Panel</h1>
+  <mat-card>
+    <h2>Light Control</h2>
+    <div *ngIf="lightLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!lightLoading">
+      <mat-button-toggle-group [value]="lightStatus" (change)="toggleLight($event.value)">
+        <mat-button-toggle [value]="lightStatuses.ON">
+          <mat-icon>lightbulb_outline</mat-icon>
+          On
+        </mat-button-toggle>
+        <mat-button-toggle [value]="lightStatuses.OFF">
+          <mat-icon>lightbulb</mat-icon>
+          Off
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Rollet Control</h2>
+    <div *ngIf="rolletLoading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="!rolletLoading">
+      <mat-button-toggle-group [value]="rolletStatus" (change)="toggleRollet($event.value)">
+        <mat-button-toggle [value]="rolletStatuses.OPEN">
+          <mat-icon>arrow_upward</mat-icon>
+          Open
+        </mat-button-toggle>
+        <mat-button-toggle [value]="rolletStatuses.CLOSED">
+          <mat-icon>arrow_downward</mat-icon>
+          Close
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <h2>Voice Commands</h2>
+    <button mat-fab color="accent" (click)="listenCommands()">
+      <mat-icon>mic</mat-icon>
+    </button>
+  </mat-card>
+</div>
